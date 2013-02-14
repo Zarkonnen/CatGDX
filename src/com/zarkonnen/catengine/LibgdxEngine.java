@@ -205,6 +205,7 @@ public abstract class LibgdxEngine implements ApplicationListener, Engine, Input
 	public void playMusic(String music, double volume, MusicDone doneCallback) {
 		if (!music.contains(".")) { music += ".ogg"; }
 		stopMusic();
+		this.doneCallback = doneCallback;
 		musicName = music;
 		musicVolume = volume;
 		currentMusic = Gdx.audio.newMusic(Gdx.files.internal(soundLoadBase + music));
