@@ -27,6 +27,7 @@ public abstract class LibgdxEngine implements ApplicationListener, Engine, Input
 	ShapeRenderer shapeRenderer;
 	float timeAccumulated = 0;
 	boolean spriting = true;
+	boolean vsynced = false;
 	
 	@Override
 	public void create() {
@@ -51,6 +52,11 @@ public abstract class LibgdxEngine implements ApplicationListener, Engine, Input
 				stopMusic();
 			}
 			game.input(this);
+		}
+		
+		if (!vsynced) {
+			Gdx.graphics.setVSync(true);
+			vsynced = true;
 		}
 		
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
